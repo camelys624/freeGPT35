@@ -24,7 +24,7 @@ jobs:
       - name: npm install, build, and test
         run: |
           npm install
-          nohup node ./app.js &
+          pm2 start ./app.js --no-daemon
 
   deploy:
     runs-on: ubuntu-latest
