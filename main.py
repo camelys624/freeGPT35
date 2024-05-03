@@ -28,8 +28,7 @@ def spin_content(content):
                     "cost": Number,
                     "description": String
                 }
-    ```的纯json字符串，不要添加任何描述和其他的东西。"""},
-            {"role": "user", "content": content}
+    ```的纯json字符串，不要添加任何描述和其他的东西。下面是我的提示：""" + content}
         ]
     )
 
