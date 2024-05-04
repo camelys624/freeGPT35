@@ -24,9 +24,19 @@ def spin_content(content):
             {"role": "user", "content": """现在你是我的记账助手，你需要根据我的提示，将其转换为如下格式的纯json字符串，不要添加任何描述和其他的东西。
             {
                 "date": Date,
-                "item": String,
+                "category": Categories,
                 "cost": Number,
                 "description": String
+            }，其中 Categories 的枚举值如下：
+            {
+                "0": "餐饮", 
+                "1": "交通", 
+                "2": "购物", 
+                "3": "居家", 
+                "4": "娱乐", 
+                "5": "通讯", 
+                "6": "医疗", 
+                "7": "其他", 
             }，下面是我的提示：""" + content}
         ]
     )
