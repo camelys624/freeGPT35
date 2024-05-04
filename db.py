@@ -4,6 +4,7 @@ from pymongo.server_api import ServerApi
 
 from dotenv import load_dotenv
 import os
+import json
 
 load_dotenv()
 
@@ -26,9 +27,18 @@ def insertData(data):
         print("插入失败")
 
 
-insertData({
+# insertData({
+#     "date": "2024-05-03",
+#     "item": "groceries",
+#     "cost": 15,
+#     "description": "今天买菜花费15元"
+# })
+
+print(json.loads("""
+{
     "date": "2024-05-03",
-    "item": "groceries",
+    "item": "午餐",
     "cost": 15,
-    "description": "今天买菜花费15元"
-})
+    "description": "中午吃饭的费用"
+}
+"""))

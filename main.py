@@ -14,22 +14,27 @@ app.add_middleware(
 g4f.logging = True
 
 
-@app.get('/')
+@app.get('/v1/competion')
 def spin_content(content):
     print(content)
     response = g4f.ChatCompletion.create(
         model=g4f.models.default,
         provider=None,
         messages=[
-            {"role": "user", "content": """现在你是我的记账助手，你需要根据我的提示，将其转换为此格式 ```json
-                {
-                    "date": Date,
-                    "item": String,
-                    "cost": Number,
-                    "description": String
-                }
-    ```的纯json字符串，不要添加任何描述和其他的东西。下面是我的提示：""" + content}
+            {"role": "user", "content": """现在你是我的记账助手，你需要根据我的提示，将其转换为如下格式的纯json字符串，不要添加任何描述和其他的东西。
+            {
+                "date": Date,
+                "item": String,
+                "cost": Number,
+                "description": String
+            }，下面是我的提示：""" + content}
         ]
     )
 
     return response
+
+@app.get("/test")
+def test_content(content):
+    print(content)
+    return {"status": True, "message": "success"}
+    
