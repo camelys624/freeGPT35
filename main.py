@@ -1,6 +1,7 @@
 import g4f
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import json
 
 from db import insertData, findData
 
@@ -43,7 +44,7 @@ def spin_content(content):
     )
 
     json_response = response.replace('```json', '').replace('```', '')
-    result = insertData(json_response)
+    result = insertData(json.loads(json_response))
     
     return result
 
