@@ -22,23 +22,15 @@ def insertData(data):
     result = collection.insert_one(data)
     
     if result.acknowledged:
-        print("插入成功")
+        print({"staus": True, "message": "success"})
     else:
-        print("插入失败")
+        print({"status": False, "message": "something wrong"})
 
-
-# insertData({
-#     "date": "2024-05-03",
-#     "item": "groceries",
-#     "cost": 15,
-#     "description": "今天买菜花费15元"
-# })
-
-print(json.loads("""
-{
-    "date": "2024-05-03",
-    "item": "午餐",
-    "cost": 15,
-    "description": "中午吃饭的费用"
-}
-"""))
+def findData(pageSize=10, pageNum=0):
+    results = []
+    cursor = collection.find().skip(pageSize * (pageNum - 1)).limit(10)
+    for doc in cursor:
+        doc["_id"] = str(doc["_id"])
+        
+        results.append(doc)
+    return results
